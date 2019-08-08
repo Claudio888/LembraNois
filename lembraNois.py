@@ -70,5 +70,5 @@ async def create_client(agenda: Agenda):
 
 
 scheduler = AsyncIOScheduler()
-scheduler.add_job(job, 'interval', seconds=15)
+scheduler.add_job(job, 'interval', minutes=30)
 scheduler.start()
