@@ -21,10 +21,12 @@ def job():
     for result_index, result in enumerate(results):
         result_unique = results[result_index]
         print('fazendo o for', result_index)
-        print(result_unique[1])
-        actualHourMinus30 = datetime.now() - timedelta(minutes=30)
-        print(actualHourMinus30)
-        if result_unique[1] < actualHourMinus30 :
+        actualHourPlus30 = datetime.now() + timedelta(minutes=30)
+        actualHour = datetime.now()
+        print('hora atual + 30 min',actualHourPlus30)
+        print('querie',result_unique[1])
+        print('hora atual', actualHour)
+        if actualHour <= result_unique[1] and result_unique[1] <= actualHourPlus30 :
             print('entrou no if')
             telegram_bot_sendtext("You have an appointment scheduled up to: {0} "
                                   "with the following reminder: {1}".format(result_unique[1].replace(microsecond=0), result_unique[2]))
@@ -68,5 +70,5 @@ async def create_client(agenda: Agenda):
 
 
 scheduler = AsyncIOScheduler()
-scheduler.add_job(job, 'interval', seconds=30)
+scheduler.add_job(job, 'interval', seconds=15)
 scheduler.start()
