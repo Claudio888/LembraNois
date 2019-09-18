@@ -26,6 +26,7 @@ def job():
         print('hora atual + 30 min',actualHourPlus30)
         print('querie',result_unique[1])
         print('hora atual', actualHour)
+        print("Add a test")
         if actualHour <= result_unique[1] <= actualHourPlus30:
             print('entrou no if')
             telegram_bot_sendtext("You have an appointment scheduled up to: {0} "
